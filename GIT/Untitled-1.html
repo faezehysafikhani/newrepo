@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم ثبت اطلاعات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .output {
+            margin-top: 20px;
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="userForm">
+        <label for="firstName">نام:</label>
+        <input type="text" id="firstName" name="firstName" required>
+
+        <label for="lastName">نام خانوادگی:</label>
+        <input type="text" id="lastName" name="lastName" required>
+
+        <label for="phone">شماره تماس:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="nationality">ملیت:</label>
+        <input type="text" id="nationality" name="nationality" required>
+
+        <label for="address">آدرس:</label>
+        <input type="text" id="address" name="address" required>
+
+        <button type="submit">ثبت</button>
+    </form>
+
+    <div class="output" id="output"></div>
+
+    <script>
+        // گرفتن فرم
+        const form = document.getElementById('userForm');
+        const outputDiv = document.getElementById('output');
+
+        // مدیریت ثبت فرم
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // جلوگیری از ارسال فرم پیش‌فرض
+
+            // گرفتن اطلاعات ورودی‌های فرم
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const phone = document.getElementById('phone').value;
+            const nationality = document.getElementById('nationality').value;
+            const address = document.getElementById('address').value;
+
+            // نمایش اطلاعات ثبت‌شده
+            outputDiv.innerHTML = `
+                <h3>اطلاعات ثبت شده:</h3>
+                <p><strong>نام:</strong> ${firstName}</p>
+                <p><strong>نام خانوادگی:</strong> ${lastName}</p>
+                <p><strong>شماره تماس:</strong> ${phone}</p>
+                <p><strong>ملیت:</strong> ${nationality}</p>
+                <p><strong>آدرس:</strong> ${address}</p>
+            `;
+
+            // پاک‌کردن فرم پس از ثبت
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>
